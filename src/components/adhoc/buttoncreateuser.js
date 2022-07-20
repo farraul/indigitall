@@ -12,7 +12,6 @@ const ButtonCreateUser = () => {
 
 
     return (
-
         <>
             <Button onClick={() => { setModalCreateUser(true) }} variant="fab" color="primary" aria-label="Add" style={{ width: 35, height: 30 }}>
                 <AddIcon />

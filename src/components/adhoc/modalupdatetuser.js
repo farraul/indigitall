@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 
 
-const ModalEditUser = ({ modalEdit, setModalEdit, id }) => {
+const ModalEditUser = ({ setModalEdit, id }) => {
 
     const [data, setData] = useState({
         name: "",
@@ -14,7 +14,7 @@ const ModalEditUser = ({ modalEdit, setModalEdit, id }) => {
         age: null
     })
 
-     const sendData = () => {
+    const sendData = () => {
         axios.put(`http://localhost:9090/users/${id}`, data)
             .then((response) => {
                 console.log("response:", response)
@@ -23,20 +23,18 @@ const ModalEditUser = ({ modalEdit, setModalEdit, id }) => {
                 console.log(error);
             });
 
+            setModalEdit(false)
     }
-
 
     return (
         <>
 
             <div className="modal-edit-user">
-                <div onClick={() => { setModalEdit(!modalEdit) }}>xxx</div>
-
-
+                <div onClick={() => { setModalEdit(false) }}>x</div>
 
                 <div className="modal-edit-user__box">
 
-                    <div className="modal-create-user__close" onClick={() => { setModalEdit(!modalEdit) }}>x</div>
+                    <div className="modal-create-user__close" onClick={() => { setModalEdit(false) }}>x</div>
                     <div> Modifica los campos que quieras</div>
 
                     <div className="modal-edit-user__input">
@@ -79,7 +77,7 @@ const ModalEditUser = ({ modalEdit, setModalEdit, id }) => {
                     </div>
 
                     <div className="modal-create-user__button">
-                        <Button variant="contained" fullWidth  onClick={() => sendData(id)} >Modificar usuario</Button>
+                        <Button variant="contained" fullWidth onClick={() => sendData(id)} >Modificar usuario</Button>
                     </div>
                 </div>
                 HOLA

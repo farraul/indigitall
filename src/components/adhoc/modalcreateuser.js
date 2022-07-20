@@ -5,7 +5,6 @@ import axios from "axios";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
-//import { Value } from "sass";
 
 
 const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
@@ -25,7 +24,6 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
             .catch((error) => {
                 console.log(error);
             });
-
         setModalCreateUser(!modalCreateUser)
     }
 
