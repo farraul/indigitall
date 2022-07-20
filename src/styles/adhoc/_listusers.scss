@@ -1,0 +1,19 @@
+.list-users{
+    background-color: lightblue;
+    display: flex;
+    padding: 0.5em 3em;
+    border-bottom: 1px grey solid;
+
+
+    &__data{
+        width: 23%;;
+    }
+    &__edit{
+        width: 3em;;
+    }
+    &__delete{
+        width: 3em;;
+    }
+    
+    
+}

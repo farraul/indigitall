@@ -1,0 +1,34 @@
+.modal-create-user{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.451);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__box{
+        width: 25em;
+        height: fit-content;
+        background-color: white;
+        border-radius: 0.5em;
+        padding: 1em 2em;
+        box-sizing: border-box;
+    }
+
+    &__input{
+        margin-top: 1em
+    }
+
+    &__button{
+        margin-top: 1em;
+    }
+
+    &__close{
+     text-align: right;   
+     cursor: pointer;
+    }
+}
+

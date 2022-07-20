@@ -1,0 +1,24 @@
+.modal-edit-user{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.451);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__box{
+        width: 25em;
+        height: 10em;
+        background-color: gray;
+        border-radius: 0.5em;
+        padding: 1em;
+        box-sizing: border-box;
+    }
+
+    &__close{
+     text-align: right;   
+    }
+}
