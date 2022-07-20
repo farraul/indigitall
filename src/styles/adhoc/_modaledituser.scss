@@ -1,4 +1,4 @@
-.modal-edit-user{
+.modal-edit-user {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -9,16 +9,22 @@
     justify-content: center;
     align-items: center;
 
-    &__box{
+    &__box {
         width: 25em;
-        height: 10em;
-        background-color: gray;
+        height: fit-content;
+        background-color: white;
         border-radius: 0.5em;
-        padding: 1em;
+        padding: 1em 2em 2.5em 2em;
         box-sizing: border-box;
     }
+    &__input{
+        margin-top: 1em
+    }
 
-    &__close{
-     text-align: right;   
+    &__close {
+        text-align: right;
+    }
+    &__button{
+        margin-top: 1em;
     }
 }

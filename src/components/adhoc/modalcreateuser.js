@@ -8,25 +8,19 @@ import { Button } from "@mui/material";
 //import { Value } from "sass";
 
 
-
 const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
 
-    let data = {
-        name: null,
-        lastname: null,
-        email: null,
+    const [data, setData] = useState({
+        name: "",
+        lastName: "",
+        email: "",
         age: null
     }
-
+    )
     const sendData = () => {
-        axios.post('http://localhost:9090/users', {
-            name: 'kkkk',
-            lastName: 'd',
-            email: 'r@gmail.com',
-            age: 3
-        })
+        axios.post('http://localhost:9090/users', data)
             .then((response) => {
-                console.log("response:",response)
+                console.log("response:", response)
             })
             .catch((error) => {
                 console.log(error);
@@ -42,7 +36,6 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
                 <div className="modal-create-user__box">
 
                     <div className="modal-create-user__close" onClick={() => { setModalCreateUser(!modalCreateUser) }}>x</div>
-                    <div> Crear Usuario</div>
 
                     <div className="modal-create-user__input">
                         <TextField
@@ -50,6 +43,8 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
                             label="Nombre"
                             variant="filled"
                             fullWidth
+                            onChange={(e) => { setData({ ...data, name: e.target.value }) }}
+
                         />
                     </div>
                     <div className="modal-create-user__input">
@@ -58,6 +53,7 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
                             label="Apellidos"
                             variant="filled"
                             fullWidth
+                            onChange={(e) => { setData({ ...data, lastName: e.target.value }) }}
                         />
                     </div>
                     <div className="modal-create-user__input">
@@ -66,6 +62,8 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
                             label="Email"
                             variant="filled"
                             fullWidth
+                            onChange={(e) => { setData({ ...data, email: e.target.value }) }}
+
                         />
                     </div>
                     <div className="modal-create-user__input">
@@ -74,10 +72,11 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser }) => {
                             label="Edad"
                             variant="filled"
                             fullWidth
+                            onChange={(e) => { setData({ ...data, age: e.target.value }) }}
                         />
                     </div>
                     <div className="modal-create-user__button">
-                        <Button variant="contained" fullWidth onClick={() => sendData()}>Contained</Button>
+                        <Button variant="contained" fullWidth onClick={() => sendData()}>Crear usuario</Button>
                     </div>
                 </div>
             </div>

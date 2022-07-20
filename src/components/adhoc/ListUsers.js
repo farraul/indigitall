@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ModalEditUser from "./modaledituser";
+import imagedelete from "../../assets/images/delete.png"
+import imageupdate from "../../assets/images/update.png"
 
 const ListUsers = () => {
 
     const [users, setUsers] = useState(null);
     const [modalEdit, setModalEdit] = useState(null);
+    const [idEdit, setIdEdit] = useState(null);
+
 
 
     useEffect(() => {
@@ -18,10 +22,20 @@ const ListUsers = () => {
             });
     }, [])
 
-    const edituser = (id) => {
-        //axios.put(`http://localhost:9090/users/${id}`,{name:'raul999j'})
-        setModalEdit(true)
 
+    const deleteUser = (id) => {
+        axios.delete(`http://localhost:9090/users/${id}`)
+            .then((response) => {
+                console.log("response:", response)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const editUser= (id) =>{
+        setModalEdit(true)
+        setIdEdit(id)
     }
 
     return (
@@ -31,7 +45,7 @@ const ListUsers = () => {
 
                 users.data.map((element, index) => {
                     let dataprint = null;
-                   // console.log("element", element)
+                    // console.log("element", element)
 
                     return (
                         <div className="list-users" key={index}>
@@ -39,15 +53,16 @@ const ListUsers = () => {
                             <div className="list-users__data"> {element.lastName} </div>
                             <div className="list-users__data"> {element.email} </div>
                             <div className="list-users__data"> {element.age} </div>
-                            <div className="list-users__edit" onClick={() => edituser(element.id)}> edit</div>
-                            <div className="list-users__delete"> delete</div>
+
+                            <div className="list-users__edit" onClick={() => editUser(element.id) }><img className="list-users__delete__img" src={imageupdate} /></div>
+                            <div className="list-users__delete" onClick={() => deleteUser(element.id)}><img className="list-users__delete__img" src={imagedelete} /></div>
                         </div>
                     )
                 })
 
             }
 
-            {modalEdit&&<ModalEditUser modalEdit={modalEdit} setModalEdit={setModalEdit} />}
+            {modalEdit && <ModalEditUser modalEdit={modalEdit} setModalEdit={setModalEdit} id={idEdit} />}
         </>
     )
 }
