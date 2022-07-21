@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 
 
-const ModalEditUser = ({ setModalEdit, id }) => {
+const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
 
     const [data, setData] = useState({
         name: "",
@@ -16,8 +16,8 @@ const ModalEditUser = ({ setModalEdit, id }) => {
 
     const sendData = () => {
         axios.put(`http://localhost:9090/users/${id}`, data)
-            .then((response) => {
-                console.log("response:", response)
+            .then(({data}) => {
+                setUsers([...users, data]);
             })
             .catch((error) => {
                 console.log(error);

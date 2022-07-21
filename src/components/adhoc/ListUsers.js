@@ -1,30 +1,41 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ModalUpdateUser from "./modalupdatetuser";
-import imagedelete from "../../assets/images/delete.png"
-import imageupdate from "../../assets/images/update.png"
+import ModalUpdateUser from "./ModalUpdatetUser";
+import imagedelete from "../../assets/images/delete.png";
+import imageupdate from "../../assets/images/update.png";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 
-const ListUsers = () => {
+const ListUsers = ({ users, setUsers }) => {
 
-    const [users, setUsers] = useState(null);
     const [modalEdit, setModalEdit] = useState(null);
-    const [idEdit, setIdEdit] = useState(null);
+    const [idUser, setIdUser] = useState(null);
+    const [beforeDeleteUser, setBeforeDeleteUser] = useState(false);
 
-    useEffect(() => {
-        axios.get( 'http://localhost:9090/users' )
-            .then((response) => {
-                setUsers(response)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [])
-
-
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        pt: 2,
+        px: 4,
+        pb: 3,
+      };
+      
     const deleteUser = (id) => {
-        axios.delete( `http://localhost:9090/users/${id}` )
-            .then((response) => {
-                console.log("response:", response)
+        axios.delete(`http://localhost:9090/users/${id}`)
+            .then(({ data, status }) => {
+                console.log("response:", data)
+                if (status === 200 && data === "Deleted") {
+
+                    setUsers(users.filter(user => user.id !== id))
+
+                    console.log("okii", users.filter(user => user.id !== id))
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -33,7 +44,7 @@ const ListUsers = () => {
 
     const editUser = (id) => {
         setModalEdit(true)
-        setIdEdit(id)
+        setIdUser(id)
     }
 
     return (
@@ -51,26 +62,38 @@ const ListUsers = () => {
                 </div>
             </div>
 
-            {users &&
-                users.data.map((element, index) => {
+            {
+                users.map((user, index) => {
 
                     return (
-                        <div className="list-users" key={index}>
+                        <div className="list-users" key={"user-"+index}>
                             <div className="list-users__group">
-                                <div className="list-users__data"> {element.name} </div>
-                                <div className="list-users__data"> {element.lastName} </div>
-                                <div className="list-users__data"> {element.email} </div>
-                                <div className="list-users__data"> {element.age} </div>
+                                <div className="list-users__data"> {user.name} </div>
+                                <div className="list-users__data"> {user.lastName} </div>
+                                <div className="list-users__data"> {user.email} </div>
+                                <div className="list-users__data"> {user.age} </div>
                             </div>
                             <div className="list-users__icons-actions">
-                            <div className="list-users__edit" onClick={() => editUser(element.id)}><img className="list-users__delete__img" src={imageupdate} /></div>
-                            <div className="list-users__delete" onClick={() => deleteUser(element.id)}><img className="list-users__delete__img" src={imagedelete} /></div>
+                                <div className="list-users__edit" onClick={() => editUser(user.id)}><img className="list-users__delete__img" src={imageupdate} /></div>
+                                <div className="list-users__delete" onClick={() => { setBeforeDeleteUser(true); setIdUser(user.id)}}><img className="list-users__delete__img" src={imagedelete} /></div>
                             </div>
                         </div>
                     )
                 })
             }
-            {modalEdit && <ModalUpdateUser setModalEdit={setModalEdit} id={idEdit} />}
+
+            <Modal
+                open={beforeDeleteUser}
+                onClose={()=>setBeforeDeleteUser(false)}
+                aria-labelledby="parent-modal-title"
+                aria-describedby="parent-modal-description"
+            >
+                <Box sx={{ ...style, width: 400 }}>
+                    <h2 id="parent-modal-title">Desea eliminar el usuario</h2>
+                  <button onClick={()=> { deleteUser(idUser); setBeforeDeleteUser(false)}}>Eliminar</button>
+                </Box>
+            </Modal>
+            {modalEdit && <ModalUpdateUser setModalEdit={setModalEdit} id={idUser} users={users} setUsers={setUsers} />}
         </>
     )
 }
