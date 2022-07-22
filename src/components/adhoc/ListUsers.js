@@ -67,7 +67,7 @@ const ListUsers = ({ users, setUsers }) => {
                 users.map((user, index) => {
 
                     return (
-                        <div className="list-users" key={"user-" + index}>
+                        <div className="list-users" key={index}>
                             <div className="list-users__group">
                                 <div className="list-users__data"> {user.name} </div>
                                 <div className="list-users__data"> {user.lastName} </div>

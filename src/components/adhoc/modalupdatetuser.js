@@ -4,24 +4,26 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import axios from "axios";
 
-const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
+const ModalEditUser = ({ setModalEdit, id, users, setUsers }) => {
 
-    const [data, setData] = useState({
-        name: "",
-        lastName: "",
-        email: "",
-        age: null
-    })
+    let userEdit = users.filter((user) => user.id === id);
+
+    const [userData, setUserData] = useState(userEdit[0])
 
     const sendData = () => {
-        axios.put(`http://localhost:9090/users/${id}`, data)
-            .then(({data}) => {
-                setUsers([...users, data]);
+        axios.put(`http://localhost:9090/users/${id}`, userData)
+
+            .then(({ data, status }) => {
+
+                if (status === 200) {
+                     setUsers(users.map(( user)=> user.id === data.id ? data : user));
+                } 
             })
+
             .catch((error) => {
                 console.log(error);
             });
-            setModalEdit(false)
+        setModalEdit(false)
     }
 
     return (
@@ -38,18 +40,20 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                         <TextField
                             id="filled-basic"
                             label="Nombre"
+                            value={userData.name}
                             variant="filled"
                             fullWidth
-                            onChange={(e) => { setData({ ...data, name: e.target.value }) }}
+                            onChange={(e) => { setUserData({ ...userData, name: e.target.value }) }}
                         />
                     </div>
                     <div className="modal-edit-user__input">
                         <TextField
                             id="filled-basic"
                             label="Apellidos"
+                            value={userData.lastName}
                             variant="filled"
                             fullWidth
-                            onChange={(e) => { setData({ ...data, lastName: e.target.value }) }}
+                            onChange={(e) => { setUserData({ ...userData, lastName: e.target.value }) }}
                         />
                     </div>
                     <div className="modal-edit-user__input">
@@ -57,17 +61,19 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                             id="filled-basic"
                             label="Email"
                             variant="filled"
+                            value={userData.email}
                             fullWidth
-                            onChange={(e) => { setData({ ...data, email: e.target.value }) }}
+                            onChange={(e) => { setUserData({ ...userData, email: e.target.value }) }}
                         />
                     </div>
                     <div className="modal-edit-user__input">
                         <TextField
                             id="filled-basic"
                             label="Edad"
+                            value={userData.age}
                             variant="filled"
                             fullWidth
-                            onChange={(e) => { setData({ ...data, age: e.target.value }) }}
+                            onChange={(e) => { setUserData({ ...userData, age: e.target.value }) }}
                         />
                     </div>
 

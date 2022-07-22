@@ -28,13 +28,10 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
 
                 .then(({ data }) => {
                     setUsers([...users, data]);
-
-                    console.log("response:", data)
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-
             setModalCreateUser(!modalCreateUser)
         }
     }
