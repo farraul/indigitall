@@ -12,14 +12,11 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers }) => {
 
     const sendData = () => {
         axios.put(`http://localhost:9090/users/${id}`, userData)
-
             .then(({ data, status }) => {
-
                 if (status === 200) {
                      setUsers(users.map(( user)=> user.id === data.id ? data : user));
                 } 
             })
-
             .catch((error) => {
                 console.log(error);
             });
