@@ -4,7 +4,6 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import axios from "axios";
 
-
 const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
 
     const [data, setData] = useState({
@@ -22,7 +21,6 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
             .catch((error) => {
                 console.log(error);
             });
-
             setModalEdit(false)
     }
 
@@ -31,7 +29,6 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
 
             <div className="modal-edit-user">
                 <div onClick={() => { setModalEdit(false) }}>x</div>
-
                 <div className="modal-edit-user__box">
 
                     <div className="modal-create-user__close" onClick={() => { setModalEdit(false) }}>x</div>
@@ -44,7 +41,6 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, name: e.target.value }) }}
-
                         />
                     </div>
                     <div className="modal-edit-user__input">
@@ -63,7 +59,6 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, email: e.target.value }) }}
-
                         />
                     </div>
                     <div className="modal-edit-user__input">
@@ -80,9 +75,7 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                         <Button variant="contained" fullWidth onClick={() => sendData(id)} >Modificar usuario</Button>
                     </div>
                 </div>
-                HOLA
             </div>
-
         </>
     )
 

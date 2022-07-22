@@ -18,15 +18,12 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
 
     const sendData = () => {
 
-        console.log(data);
-
         if (
             !isEmtpyNull(data.name) &&
             !isEmtpyNull(data.lastName) &&
             !isEmtpyNull(data.email) &&
             !isEmtpyNull(data.age)
         ) {
-
             axios.post('http://localhost:9090/users', data)
 
                 .then(({ data }) => {
@@ -39,11 +36,8 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                 });
 
             setModalCreateUser(!modalCreateUser)
-
         }
-
     }
-
 
     return (
         <>
@@ -62,7 +56,6 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, name: e.target.value }) }}
-
                         />
                     </div>
                     <div className="modal-create-user__input">

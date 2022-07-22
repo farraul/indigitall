@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ModalUpdateUser from "./ModalUpdatetUser";
 import imagedelete from "../../assets/images/delete.png";
@@ -35,10 +35,7 @@ const ListUsers = ({ users, setUsers }) => {
             .then(({ data, status }) => {
                 console.log("response:", data)
                 if (status === 200 && data === "Deleted") {
-
                     setUsers(users.filter(user => user.id !== id))
-
-                    console.log("okii", users.filter(user => user.id !== id))
                 }
             })
             .catch((error) => {
@@ -98,15 +95,11 @@ const ListUsers = ({ users, setUsers }) => {
                         <button className="list-users__pop-up-delete-button__delete" onClick={() => { deleteUser(idUser); setBeforeDeleteUser(false) }}>Eliminar</button>
                         <button className="list-users__pop-up-delete-button__cancel" onClick={() => setBeforeDeleteUser(false)}>Cancelar</button>
                     </div>
-
-
-
                 </Box>
             </Modal>
             {modalEdit && <ModalUpdateUser setModalEdit={setModalEdit} id={idUser} users={users} setUsers={setUsers} />}
         </>
     )
 }
-
 
 export default ListUsers;
