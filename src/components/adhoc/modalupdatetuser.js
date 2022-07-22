@@ -35,7 +35,7 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers,  }) => {
                 <div className="modal-edit-user__box">
 
                     <div className="modal-create-user__close" onClick={() => { setModalEdit(false) }}>x</div>
-                    <div> Modifica los campos que quieras</div>
+                    <div> Escribe los campos que quieras modificar</div>
 
                     <div className="modal-edit-user__input">
                         <TextField

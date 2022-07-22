@@ -14,6 +14,7 @@ const ListUsers = ({ users, setUsers }) => {
 
     const style = {
         position: 'absolute',
+        display: 'flex',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -24,8 +25,11 @@ const ListUsers = ({ users, setUsers }) => {
         pt: 2,
         px: 4,
         pb: 3,
-      };
-      
+        'flex-direction': 'column',
+        'justify-content': 'center',
+        'align-items': 'center',
+    };
+
     const deleteUser = (id) => {
         axios.delete(`http://localhost:9090/users/${id}`)
             .then(({ data, status }) => {
@@ -66,7 +70,7 @@ const ListUsers = ({ users, setUsers }) => {
                 users.map((user, index) => {
 
                     return (
-                        <div className="list-users" key={"user-"+index}>
+                        <div className="list-users" key={"user-" + index}>
                             <div className="list-users__group">
                                 <div className="list-users__data"> {user.name} </div>
                                 <div className="list-users__data"> {user.lastName} </div>
@@ -75,7 +79,7 @@ const ListUsers = ({ users, setUsers }) => {
                             </div>
                             <div className="list-users__icons-actions">
                                 <div className="list-users__edit" onClick={() => editUser(user.id)}><img className="list-users__delete__img" src={imageupdate} /></div>
-                                <div className="list-users__delete" onClick={() => { setBeforeDeleteUser(true); setIdUser(user.id)}}><img className="list-users__delete__img" src={imagedelete} /></div>
+                                <div className="list-users__delete" onClick={() => { setBeforeDeleteUser(true); setIdUser(user.id) }}><img className="list-users__delete__img" src={imagedelete} /></div>
                             </div>
                         </div>
                     )
@@ -84,13 +88,19 @@ const ListUsers = ({ users, setUsers }) => {
 
             <Modal
                 open={beforeDeleteUser}
-                onClose={()=>setBeforeDeleteUser(false)}
+                onClose={() => setBeforeDeleteUser(false)}
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box sx={{ ...style, width: 400 }}>
-                    <h2 id="parent-modal-title">Desea eliminar el usuario</h2>
-                  <button onClick={()=> { deleteUser(idUser); setBeforeDeleteUser(false)}}>Eliminar</button>
+                <Box sx={{ ...style, width: 400, height: 200, }}>
+                    <h2 id="parent-modal-title" className="list-users__pop-up-delete-title">Desea eliminar el usuario</h2>
+                    <div className="list-users__pop-up-buttons">
+                        <button className="list-users__pop-up-delete-button__delete" onClick={() => { deleteUser(idUser); setBeforeDeleteUser(false) }}>Eliminar</button>
+                        <button className="list-users__pop-up-delete-button__cancel" onClick={() => setBeforeDeleteUser(false)}>Cancelar</button>
+                    </div>
+
+
+
                 </Box>
             </Modal>
             {modalEdit && <ModalUpdateUser setModalEdit={setModalEdit} id={idUser} users={users} setUsers={setUsers} />}

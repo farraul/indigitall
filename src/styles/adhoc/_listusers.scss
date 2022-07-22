@@ -65,6 +65,32 @@
             height: 1.5em;
         }
     }
+    &__pop-up-delete-title{
+        text-align: center;
+    }
+
+    &__pop-up-delete-button{
+     
+
+        &__delete{
+            width: 50%;
+            height: 3em;
+            border: none;
+            background-color: rgb(139, 0, 0);
+            color: white;
+        }
+        
+        &__cancel{
+            width: 50%;
+            height: 3em;
+            border: none;
+            background-color: green;
+            color: white;
+        }
+    }
+    &__pop-up-buttons{
+        width: 100%;
+    }
 
 
 }
