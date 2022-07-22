@@ -18,25 +18,25 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
 
     const sendData = () => {
 
-        console.log( data );
+        console.log(data);
 
         if (
-            ! isEmtpyNull( data.name ) &&
-            ! isEmtpyNull( data.lastName ) &&
-            ! isEmtpyNull( data.email ) &&
-            ! isEmtpyNull( data.age )
+            !isEmtpyNull(data.name) &&
+            !isEmtpyNull(data.lastName) &&
+            !isEmtpyNull(data.email) &&
+            !isEmtpyNull(data.age)
         ) {
 
             axios.post('http://localhost:9090/users', data)
-        
-            .then(({ data }) => {
-                setUsers([...users, data]);
 
-                console.log("response:", data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then(({ data }) => {
+                    setUsers([...users, data]);
+
+                    console.log("response:", data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
             setModalCreateUser(!modalCreateUser)
 
@@ -55,10 +55,10 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                     <div className="modal-create-user__input">
                         <TextField
                             required
-                            error={isEmtpyNull( data.name )}
+                            error={isEmtpyNull(data.name)}
                             id="filled-basic"
                             label="Nombre"
-                            helperText={isEmtpyNull( data.name ) && "El nombre es requerido"}
+                            helperText={isEmtpyNull(data.name) && "El nombre es requerido"}
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, name: e.target.value }) }}
@@ -67,9 +67,10 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                     </div>
                     <div className="modal-create-user__input">
                         <TextField
+                            required
                             id="filled-basic"
-                            error={isEmtpyNull( data.lastName )}
-                            helperText={isEmtpyNull( data.lastName ) ? "El apellido es requerido" : ""}
+                            error={isEmtpyNull(data.lastName)}
+                            helperText={isEmtpyNull(data.lastName) ? "El apellido es requerido" : ""}
                             label="Apellidos"
                             variant="filled"
                             fullWidth
@@ -78,9 +79,10 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                     </div>
                     <div className="modal-create-user__input">
                         <TextField
+                            required
                             id="filled-basic"
-                            error={isEmtpyNull( data.email )}
-                            helperText={isEmtpyNull( data.email ) ? "El email es requerido" : ""}
+                            error={isEmtpyNull(data.email)}
+                            helperText={isEmtpyNull(data.email) ? "El email es requerido" : ""}
                             label="Email"
                             variant="filled"
                             fullWidth
@@ -90,9 +92,10 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                     </div>
                     <div className="modal-create-user__input">
                         <TextField
+                            required
                             id="filled-basic"
-                            error={isEmtpyNull( data.age )}
-                            helperText={isEmtpyNull( data.age ) ? "La edad es requerida" : ""}
+                            error={isEmtpyNull(data.age)}
+                            helperText={isEmtpyNull(data.age) ? "La edad es requerida" : ""}
                             label="Edad"
                             variant="filled"
                             fullWidth
