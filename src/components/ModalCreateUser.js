@@ -4,7 +4,8 @@ import * as React from 'react';
 import axios from "axios";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
-import isEmtpyNull from "../../constants/isEmptyNull";
+import isEmtpyNull from "../utils/isEmptyNull";
+import { postUsers } from "../api";
 
 
 const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers }) => {
@@ -16,7 +17,8 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
         age: null
     })
 
-    const sendData = () => {
+
+    const sendData = async () => {
 
         if (
             !isEmtpyNull(data.name) &&
@@ -24,14 +26,7 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
             !isEmtpyNull(data.email) &&
             !isEmtpyNull(data.age)
         ) {
-            axios.post('http://localhost:9090/users', data)
-
-                .then(({ data }) => {
-                    setUsers([...users, data]);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            setUsers([...users, await postUsers(data)]);
             setModalCreateUser(!modalCreateUser)
         }
     }

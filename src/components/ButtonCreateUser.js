@@ -5,7 +5,7 @@ import ModalCreateUser from "./ModalCreateUser";
 import { Button } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
  
-const FormCreateUser = ({users, setUsers}) => {
+const ButtonCreateUser = ({users, setUsers}) => {
     const [modalCreateUser, setModalCreateUser] = useState(false);
     return (
         <>
@@ -17,4 +17,4 @@ const FormCreateUser = ({users, setUsers}) => {
     )
 }
 
-export default FormCreateUser;
+export default ButtonCreateUser;
