@@ -17,7 +17,7 @@ const getUsers = () => {
 const postUsers = (data) => {
   return axios.post(`${API_URL}/users`, data)
     .then(({ data }) => {
-      console.log("return data",data)
+      console.log("return data", data)
       return data;
     })
     .catch((error) => {
@@ -26,20 +26,32 @@ const postUsers = (data) => {
 }
 
 
-
 const deleteUsers = (id) => {
- return axios.delete(`${API_URL}/users/${id}`)
-  .then(({ data, status }) => {
+  return axios.delete(`${API_URL}/users/${id}`)
+    .then(({ data, status }) => {
       if (status === 200 && data === "Deleted") {
-         // setUsers(users.filter(user => user.id !== id))
-         return {data, status}
+        return { data, status }
       }
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
-  });
+    });
+}
+
+const updateUsers = (id, userData) => {
+
+
+  return axios.put(`http://localhost:9090/users/${id}`, userData)
+    .then(({ data, status }) => {
+      if (status === 200) {
+        return { data, status }
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
 }
 
 
-
-export { getUsers, postUsers, deleteUsers }
+export { getUsers, postUsers, deleteUsers, updateUsers }

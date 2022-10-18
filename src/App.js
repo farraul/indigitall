@@ -13,7 +13,6 @@ function App() {
 
   const [users, setUsers] = useState([]);
 
-
   const getAllUsers = async () => {
     const users= await getUsers()
     setUsers(users)
@@ -46,7 +45,6 @@ function App() {
             }}>
               <Typography variant="title" color="inherit" style={{ display: 'inline' }}>Listado de usuarios</Typography>
               {' '}
-
               <FormCreateUser users={users} setUsers={setUsers} />
 
               {users &&

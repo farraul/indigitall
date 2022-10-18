@@ -72,7 +72,6 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, email: e.target.value }) }}
-
                         />
                     </div>
                     <div className="modal-create-user__input">

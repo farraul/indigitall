@@ -3,23 +3,16 @@ import * as React from 'react';
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { updateUsers } from "../api";
 
 const ModalEditUser = ({ setModalEdit, id, users, setUsers }) => {
 
     let userEdit = users.filter((user) => user.id === id);
-
     const [userData, setUserData] = useState(userEdit[0])
 
-    const sendData = () => {
-        axios.put(`http://localhost:9090/users/${id}`, userData)
-            .then(({ data, status }) => {
-                if (status === 200) {
-                     setUsers(users.map(( user)=> user.id === data.id ? data : user));
-                } 
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const updateUser = async () => {
+        let { data }= await updateUsers(id, userData)
+        setUsers(users.map((user) => user.id === data.id ? data : user));
         setModalEdit(false)
     }
 
@@ -75,7 +68,7 @@ const ModalEditUser = ({ setModalEdit, id, users, setUsers }) => {
                     </div>
 
                     <div className="modal-create-user__button">
-                        <Button variant="contained" fullWidth onClick={() => sendData(id)} >Modificar usuario</Button>
+                        <Button variant="contained" fullWidth onClick={() => updateUser()} >Modificar usuario</Button>
                     </div>
                 </div>
             </div>

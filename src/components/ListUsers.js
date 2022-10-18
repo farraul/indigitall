@@ -11,9 +11,6 @@ const ListUsers = ({ users, setUsers }) => {
     const [idUser, setIdUser] = useState(null);
     const [beforeDeleteUser, setBeforeDeleteUser] = useState(false);
 
-
-
-
     const editUser = (id) => {
         setModalEdit(true)
         setIdUser(id)

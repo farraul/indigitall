@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
  
 const ButtonCreateUser = ({users, setUsers}) => {
+
     const [modalCreateUser, setModalCreateUser] = useState(false);
     return (
         <>
@@ -15,6 +16,7 @@ const ButtonCreateUser = ({users, setUsers}) => {
            {modalCreateUser && <ModalCreateUser setModalCreateUser={setModalCreateUser} modalCreateUser={modalCreateUser} users={users} setUsers={setUsers} /> }
         </>
     )
+    
 }
 
 export default ButtonCreateUser;
