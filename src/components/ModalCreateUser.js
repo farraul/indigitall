@@ -1,11 +1,14 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as React from 'react';
-import axios from "axios";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import isEmtpyNull from "../utils/isEmptyNull";
 import { postUsers } from "../api";
+import InputAdornment from '@mui/material/InputAdornment';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+
+
 
 
 const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers }) => {
@@ -48,6 +51,13 @@ const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers 
                             variant="filled"
                             fullWidth
                             onChange={(e) => { setData({ ...data, name: e.target.value }) }}
+                            InputProps={{
+                                startAdornment: (
+                                  <InputAdornment position="start">
+                                    <AccountCircle />
+                                  </InputAdornment>
+                                ),
+                              }}
                         />
                     </div>
                     <div className="modal-create-user__input">

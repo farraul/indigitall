@@ -1,9 +1,15 @@
 import axios from "axios";
+//import { getEnvVariable } from "./utils/environment";
+//import { REACT_APP_API_URL } from "./utils/environment";
 
-const API_URL = "http://localhost:9090";
+const REACT_APP_API_URL = 'http://localhost:9090';
+
+
+
+/*const API_URL = getEnvVariable(REACT_APP_API_URL)*/
 
 const getUsers = () => {
-  return axios.get(`${API_URL}/users`)
+  return axios.get(`${REACT_APP_API_URL}/users`)
     .then((response) => {
       return response.data
     })
@@ -15,7 +21,7 @@ const getUsers = () => {
 
 
 const postUsers = (data) => {
-  return axios.post(`${API_URL}/users`, data)
+  return axios.post(`${REACT_APP_API_URL}/users`, data)
     .then(({ data }) => {
       console.log("return data", data)
       return data;
@@ -27,7 +33,7 @@ const postUsers = (data) => {
 
 
 const deleteUsers = (id) => {
-  return axios.delete(`${API_URL}/users/${id}`)
+  return axios.delete(`${REACT_APP_API_URL}/users/${id}`)
     .then(({ data, status }) => {
       if (status === 200 && data === "Deleted") {
         return { data, status }
