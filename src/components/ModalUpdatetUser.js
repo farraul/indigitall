@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import axios from "axios";
-import { updateUsers } from "../api";
+import { updateUsers } from "../services/api";
 
 const ModalEditUser = ({ setModalEdit, id, users, setUsers }) => {
 

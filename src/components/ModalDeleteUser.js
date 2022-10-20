@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import axios from "axios";
 import { useState } from "react";
-import { deleteUsers } from '../api';
+import { deleteUsers } from '../services/api';
 
 
 

@@ -4,11 +4,9 @@ import * as React from 'react';
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import isEmtpyNull from "../utils/isEmptyNull";
-import { postUsers } from "../api";
+import { postUsers } from "../services/api";
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-
-
 
 
 const ModalCreateUser = ({ modalCreateUser, setModalCreateUser, users, setUsers }) => {
