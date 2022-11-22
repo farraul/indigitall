@@ -23,6 +23,11 @@ const pages = [
         name: 'Documentación',
         url: 'https://mui.com/material-ui/react-app-bar/',
         target: '_black'
+    },
+    {
+        name: 'Page1',
+        url: '/page1',
+        target: '_black'
     }
 
 ];
