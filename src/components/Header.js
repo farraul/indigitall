@@ -27,7 +27,7 @@ const pages = [
     {
         name: 'Page1',
         url: '/page1',
-        target: '_black'
+        target: '_self'
     }
 
 ];
