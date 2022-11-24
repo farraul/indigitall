@@ -12,37 +12,46 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { ChangeCircleOutlined } from '@mui/icons-material';
 
-const pages = [
-    {
-        name: 'Home',
-        url: '/',
-        target: '_self'
-    },
-    {
-        name: 'Documentación',
-        url: 'https://mui.com/material-ui/react-app-bar/',
-        target: '_black'
-    },
-    {
-        name: 'Page1',
-        url: '/page1',
-        target: '_self'
-    }
 
-];
-
-const settings = [
-    {
-        name: 'Home',
-        url: '/',
-        target: '_self'
-    },
-];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const history = useNavigate();
+    const pages = [
+        {
+            name: 'Home',
+            url: '/',
+            target: '_self'
+        },
+        {
+            name: 'Documentación',
+            url: 'https://mui.com/material-ui/react-app-bar/',
+            target: '_black'
+        },
+        {
+            name: 'Page1',
+            url: '/page1',
+            target: '_self'
+        }
+    
+    ];
+    
+    const settings = [
+        {
+            name: 'Home',
+            url: '/',
+            target: '_self'
+        },
+    ];
+
+    const changeUrl = (url) => {
+        console.log("change:",url)
+        Navigate("/" + url);
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -112,7 +121,7 @@ const Header = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page.name} onClick={e => {handleCloseNavMenu(); changeUrl();}}>
                                     <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                             ))}
@@ -141,7 +150,7 @@ const Header = () => {
                         {pages.map((page) => (
                             <Button
                                 key={page.name}
-                                onClick={handleCloseNavMenu}
+                                onClick={(e) => {handleCloseNavMenu(); changeUrl(page.url);}}
                                 href={page.url}
                                 target={page.target}
                                 sx={{ my: 2, color: 'white', display: 'block' }}

@@ -9,10 +9,7 @@ import Header from '../../components/Header';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 
-
-
 const Home = () => {
-
   const [users, setUsers] = useState([]);
 
   const getAllUsers = async () => {
@@ -29,14 +26,6 @@ const Home = () => {
     <>
 
       <Header />
-      {/*   <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Test React
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
-
       <div style={{
         width: '100%',
         maxWidth: '65em',
