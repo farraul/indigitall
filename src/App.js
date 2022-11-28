@@ -4,7 +4,7 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import Page1 from './pages/Page1';
+import LazyLoad from './pages/LazyLoad';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/page1' element={<Page1 />} />
+            <Route path='/lazyload' element={<LazyLoad />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { ChangeCircleOutlined } from '@mui/icons-material';
 
 
@@ -20,7 +20,6 @@ import { ChangeCircleOutlined } from '@mui/icons-material';
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const history = useNavigate();
     const pages = [
         {
             name: 'Home',
@@ -34,7 +33,7 @@ const Header = () => {
         },
         {
             name: 'Page1',
-            url: '/page1',
+            url: '/lazyload',
             target: '_self'
         }
     

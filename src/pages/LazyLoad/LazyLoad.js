@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Loading from "../../utils/loading";
 
 
-const Page1 = () => {
+const LazyLoad = () => {
     const [showPreview, setShowPreview] = useState(false);
     const TestLazy = lazy(() => delayForDemo(import('../../utils/exampleLazy.js')));
     const [markdown, setMarkdown] = useState('Hello, **world**!');
@@ -40,4 +40,4 @@ const Page1 = () => {
         </>
     )
 }
-export default Page1;
+export default LazyLoad;
