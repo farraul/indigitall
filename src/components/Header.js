@@ -35,6 +35,11 @@ const Header = () => {
             name: 'Page1',
             url: '/lazyload',
             target: '_self'
+        },
+        {
+            name: 'Cookies Navegador',
+            url: '/cookies',
+            target: '_self'
         }
     
     ];
