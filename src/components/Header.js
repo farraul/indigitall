@@ -13,7 +13,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Navigate } from 'react-router-dom';
-import { ChangeCircleOutlined } from '@mui/icons-material';
 
 
 
@@ -27,18 +26,23 @@ const Header = () => {
             target: '_self'
         },
         {
-            name: 'Documentación',
+            name: 'Docu',
             url: 'https://mui.com/material-ui/react-app-bar/',
             target: '_black'
         },
         {
-            name: 'Page1',
+            name: 'Lazy L.',
             url: '/lazyload',
             target: '_self'
         },
         {
-            name: 'Cookies Navegador',
+            name: 'Cookies',
             url: '/cookies',
+            target: '_self'
+        },
+        {
+            name: 'History',
+            url: '/history',
             target: '_self'
         }
     

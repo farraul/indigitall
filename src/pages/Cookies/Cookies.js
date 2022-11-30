@@ -40,7 +40,8 @@ const Cookies = () => {
     return (
         <>
             <Header />
-            <h1>Vamos a usar la cookies y el local storage de chrome</h1>
+            <h1>Cookies de JS</h1>
+            <p>Esto se almacena en Google Chrome F12 - Application</p>
 
             <FormControl sx={{ m: 1, minWidth: 200, maxWidth: 500 }}>
                 <InputLabel shrink htmlFor="select-multiple-native">
