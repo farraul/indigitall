@@ -5,9 +5,9 @@ import history from "../../history";
 
 const LazyLoad = () => {
 
-const returnHistory = () =>{
-history.back()
-}
+    const returnHistory = () => {
+        history.back()
+    }
 
 
     return (

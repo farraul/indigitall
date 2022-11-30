@@ -1,15 +1,4 @@
-//export const REACT_APP_API_URL = "REACT_APP_API_URL";
-
-
-
-/*export const getEnvVariable = (env_variable) => {
-    console.log("env_variable-> ",env_variable)
-    
-    console.log("--->",window?.env !== undefined 
-    ? window.env[env_variable]
-    : process.env[env_variable])
-    
-    return window?.env !== undefined 
-        ? window.env[env_variable]
-        : process.env[env_variable];
-};*/
+module.exports = {
+    BASE_URL: 'http://localhost:9090',
+    //WEB_URL: 'http://localhost:3000'
+  }
