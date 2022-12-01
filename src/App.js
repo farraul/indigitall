@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import LazyLoad from './pages/LazyLoad';
 import Cookies from './pages/Cookies'
 import History from './pages/History';
+import Call from './pages/Call';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/lazyload' element={<LazyLoad />} />
             <Route path='/history' element={<History />} />
-
+            <Route path='/call' element={<Call />} />
           </Routes>
         </BrowserRouter>
       </div>

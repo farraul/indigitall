@@ -44,6 +44,11 @@ const Header = () => {
             name: 'History',
             url: '/history',
             target: '_self'
+        },
+        {
+            name: 'call',
+            url: '/call',
+            target: '_self'
         }
     
     ];
